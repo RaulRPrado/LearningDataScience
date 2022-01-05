@@ -5,11 +5,7 @@ This repository contains a collection of notebooks that explores datasets from K
 
 ## List of Projects
 
-# Digits
-
-MNIST digits dataset wwith focus on correlations between features and PCA.
-
-# Diabetes
+1. Diabetes
 
 This is a *binary classification* problem in which the aim is to predict which patients have diabetes based on a number of measurements. 
 
@@ -20,3 +16,7 @@ There are substantial fraction of missing data that needed to be handled. These 
 A simple modeling using Logistic Regression and Random Forest is performed, without any kind of optimization.
 
 Dataset details can be found [here](https://www.kaggle.com/uciml/pima-indians-diabetes-database). 
+
+2. Digits
+
+MNIST digits dataset wwith focus on correlations between features and PCA.
