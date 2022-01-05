@@ -11,8 +11,10 @@ from sklearn.metrics import accuracy_score
 
 def build_model(X_train, y_train):
     pipe = make_pipeline(
-        TfidfVectorizer(stop_words='english', max_features=5500, decode_error='ignore'),
-        MultinomialNB()
+        TfidfVectorizer(
+            stop_words='english',
+        ),
+        MultinomialNB(alpha=0.3)
     ).fit(X_train, y_train)
     return pipe
 
@@ -70,8 +72,8 @@ def main():
     y_train = label_encoder.transform(y_train)
     clf = build_model(X_train, y_train)
 
-    # acc = clf.score(X_train, y_train)
-    # print('Training Accuracy: {}'.format(acc))
+    acc = clf.score(X_train, y_train)
+    print('Training Accuracy: {}'.format(acc))
 
     # Input data
     data_input = load_input_data()
@@ -81,17 +83,17 @@ def main():
     y_out = label_encoder.inverse_transform(y_pred)
 
     # Printing out results
-    for y in y_out:
-        print(y)
+    # for y in y_out:
+    #     print(y)
 
-    # # Extra for testing
-    # data_output = load_output_data()
+    # Extra for testing
+    data_output = load_output_data()
 
-    # _, y_output = process_data(data_output)
-    # y_output = label_encoder.transform(y_output)
+    _, y_output = process_data(data_output)
+    y_output = label_encoder.transform(y_output)
 
-    # acc_test = accuracy_score(y_pred, y_output)
-    # print('Test Accuracy: {}'.format(acc_test))
+    acc_test = accuracy_score(y_pred, y_output)
+    print('Test Accuracy: {}'.format(acc_test))
 
 
 if __name__ == '__main__':
